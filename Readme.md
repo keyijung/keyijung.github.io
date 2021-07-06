@@ -1,5 +1,7 @@
 ## 專案使用說明
 
+GitHub程式碼路徑: https://github.com/keyijung/keyijung.github.io.git
+
 此為一甜點咖啡網購系統網站。
 使用者可透過前台網站進行簡易網購行為，
 管理者可透過後台系統進行簡易網購管理行為。
