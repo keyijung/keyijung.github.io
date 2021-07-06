@@ -1,0 +1,100 @@
+﻿
+@model IEnumerable<ANYI_Cafe.Models.user>
+
+@{
+    ViewBag.Title = "會員資料列表";
+    Layout = "~/Views/Shared/_Layoutback.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row margin-top-panel">
+        <div class="col-md-12">
+            <div class="panel panel-primary box-shadow">
+                <div class="panel-heading">
+                    <h4>
+                        <span class="text-center">會員資料列表</span>
+                        <span class="pull-right">@AppService.AppName</span>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal" style="margin-top:0px">
+                        <p>
+                            @using (Html.BeginForm("Search", "User", FormMethod.Post, new { id = "SearchForm" }))
+                            {
+                                <table>
+                                    <tr>
+                                        <td>
+                                            @Html.ActionLink("新增會員", "Create", "User", null, new { @class = "btn btn-primary", @style = "background-color:#85BEFF" })
+                                        </td>
+                                    </tr>
+                                </table>
+                            }
+                        </p>
+                        <table class="table" id="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.uno)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.uemail)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.uname)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ubirth)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.utel)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.uaddr)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.uremark)
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.uno)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.uemail)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.uname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ubirth)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.utel)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.uaddr)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.uremark)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("修改", "Edit", "User", new { id = item.uid }, new { @class = "btn btn-success", @style = "background-color:#6AE6B8" })
+                                            @Html.ActionLink("刪除", "Delete", "User", new { id = item.uid }, new { @class = "btn btn-danger", @style = "background-color:#E8CCFF", onclick = "return confirm('是否確定刪除此筆資料？')" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

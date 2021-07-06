@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "MessageText";
+    Layout = "~/Views/Shared/_Layout_All.cshtml";
+}
+
+<div class="container">
+
+    <div class="row justify-content-md-center" style="margin-top:200px">
+        <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
+
+            <h4 class="text-dark text-center" style="margin-bottom:30px">@ViewBag.MessageText</h4>
+
+        </div>
+
+        <div class="form-group" style="margin-bottom:250px; margin-top:50px">
+            <div class="col-md-12 text-center">
+                @Html.ActionLink("返回登入", "Login", "User", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

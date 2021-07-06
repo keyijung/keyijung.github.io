@@ -1,0 +1,63 @@
+﻿@using ANYI_Cafe.App_Class;
+@model IEnumerable<ANYI_Cafe.Models.Orders>
+@{Layout = "~/Views/Shared/_Layout_All.cshtml";}
+
+<section id="checkout" style="margin-top:20%">
+    <div style="text-align:center">
+        <h2 class="text-danger">訂單建立完成!!謝謝您的購買!</h2>
+        <h5>
+            您的訂單編號： <span id="order_no">@Cart.OrderNo</span>
+        </h5>
+    </div>
+
+    @*<div id="list" style="text-align:center">
+
+        </div>*@
+
+    <div style="text-align:center">
+        @*<input type="button" class="btn btn-danger" value="取消" readonly onclick="cancel()" />*@
+        <input type="button" class="btn btn-warning" value="確認" readonly onclick="finish()" style="margin-bottom:280px" />
+    </div>
+
+</section>
+
+
+<script src="~/Scripts/sweetalert2.all.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    function cancel() {
+        window.location.href = "/Home/Order";
+    }
+
+    function finish() {
+        var order_no = $("#order_no").text()
+        console.log(order_no);
+        $.ajax({
+            type: "post",
+            data: { order_no: order_no },
+            url: "/Product/FinishOrderECpay",
+            success: function (result) {
+                Swal.fire(
+                    "購買成功!", "謝謝!您的訂單已成立！", "success"
+                ).then(function () {
+                    window.location = "/Home/Order";
+                })
+
+
+            }
+        })
+
+
+    }
+
+
+    //function show() {
+    //    Swal.fire(
+    //        "購買成功!", "謝謝!您的訂單已成立！", "success"
+    //    )
+    //}
+
+
+
+
+</script>

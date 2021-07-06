@@ -1,0 +1,90 @@
+﻿
+@model IEnumerable<ANYI_Cafe.Models.product>
+
+@{
+    ViewBag.Title = "商品資料列表";
+    Layout = "~/Views/Shared/_Layoutback.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row margin-top-panel">
+        <div class="col-md-12">
+            <div class="panel panel-primary box-shadow">
+                <div class="panel-heading">
+                    <h4>
+                        <span class="text-center">商品資料列表</span>
+                        <span class="pull-right">@AppService.AppName</span>
+                    </h4>
+                </div>
+                <div class="panel-body">
+
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.ActionLink("新增商品", "Create", "Product", null, new { @class = "btn btn-primary", @style = "background-color:#85BEFF" })
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.product_public)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.product_no)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.product_name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.product_spec)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.product_img)
+                                </th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.CheckBoxFor(modelItem => item.product_public, new { @disabled = "disabled" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.product_no)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.product_name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.product_spec)
+                                    </td>
+                                    <td>
+                                        <img src="@string.Format("../Images/Product/{0}/{1}.jpg?t={2}", item.product_no , item.product_no , DateTime.Now.ToString("yyyMMddHHmmss"))" style="width:80px;" alt="x" />
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-success" style="background-color:#6AE6B8"> @Html.ActionLink("修改", "Edit", new { id = item.id })</button>
+                                        <button class="btn btn-warning" style="background-color:#E8CCFF">@Html.ActionLink("刪除", "Delete", new { id = item.id }, new { @class = "", onclick = "return confirm('是否確認刪除此筆資料?')" })</button>
+                                        <button class="btn btn-info" style="background-color:#FFE4E1"> @Html.ActionLink("上傳圖片", "Upload", new { id = item.id })</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

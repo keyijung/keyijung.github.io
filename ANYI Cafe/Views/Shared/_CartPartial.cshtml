@@ -1,0 +1,47 @@
+﻿@{
+    /*取得購物車內容*/
+    var CartList = Cart.GetCartList(Cart.LotNo);
+    if (UserAccount.IsLogin)
+    {
+        CartList = Cart.GetCartList(UserAccount.UserNo);
+    };
+    string str_image_url = "";
+    string str_qty_name = "";
+    int index = 0;
+
+}
+@using ANYI_Cafe.App_Class
+
+
+<a id="CartDropDown" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-shopping-cart"><span class="Car-Counts">@Cart.Counts</span></span></a>
+<ul class="dropdown-menu" role="menu" aria-labelledby="CartDropDown" style="list-style:none">
+    @foreach (var item in CartList)
+    {
+        index += 1;
+        str_qty_name = "Carts[" + index + "].qty";
+        str_image_url = Shop.GetProductImage(item.product_no);
+        <tr>
+            <td data-th="Product">
+                <div class="row" style="width:250px">
+                    <div class="col-md-6 text-center">
+                        <img src="@str_image_url" alt="@item.product_no" class=" d-none d-md-block rounded  shadow " style="width:60px; height:75px;">
+                    </div>
+                    <div class="col-md-6 text-left " style="padding-left:0px">
+                        <h5 style="font-weight:500; font-size:15px">@item.product_name</h5>
+                        <p class="font-weight-light" style="color:rebeccapurple; font-weight:500; text-align:left;font-size:15px">@item.product_spec</p>
+                    </div>
+                </div>
+            </td>
+            <td data-th="Price"><div style="text-align:center; font-size:15px; padding-left:55px">$@item.price x @item.qty</div></td>
+            <td class="actions" data-th="">
+                <div class="text-right">
+                    <a href="/Product/CartDelete/@item.rowid" class="btn btn-white border-secondary bg-white btn-md mb-2">
+                        <i class="fa fa-times fa-1x" onclick="return confirm('確定要刪除這項商品嗎?')"></i>
+                    </a>
+                    <hr />
+                </div>
+            </td>
+        </tr>
+    }
+    <li><a class="btn btn-danger text-center Checkoutnow" href="/Product/CartList">立即結帳</a></li>
+</ul>

@@ -1,0 +1,142 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IEnumerable<ANYI_Cafe.Models.Orders>
+
+@{
+    ViewBag.Title = "已結訂單資料列表";
+    Layout = "~/Views/Shared/_Layoutback.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row margin-top-panel">
+        <div class="col-md-12">
+            <div class="panel panel-primary box-shadow">
+                <div class="panel-heading">
+                    <h4>
+                        <span class="text-center">已結訂單資料列表</span>
+                        <span class="pull-right">@AppService.AppName</span>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal" style="margin-top:0px">
+                        <div>
+                            @using (Html.BeginForm("Search", "Order", FormMethod.Post, new { id = "SearchForm" }))
+                            {
+                                <table>
+                                    <tr>
+                                        <td><label class="form-label" for="searchText">訂單查詢：</label></td>
+                                        <td style="width:200px;"><input type="search" id="searchText" name="searchText" class="form-control" /></td>
+                                        <td style="width:100px;">
+                                            <button type="submit" class="btn btn-primary">
+                                                查詢
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            }
+                        </div>
+                        <table class="table">
+                            <tr>
+                                <th></th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.order_no)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.order_date)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.order_status)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.user_no)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.payment_no)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.shipping_no)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.receive_name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.receive_email)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.receive_phone)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.receive_address)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.amounts)
+                                </th>
+                                @*<th>
+                                    @Html.DisplayNameFor(model => model.taxs)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.totals)
+                                </th>*@
+                                <th>
+                                    @Html.DisplayNameFor(model => model.remark)
+                                </th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.ActionLink("明細", "OrderDetail", "Order", new { id = item.rowid }, new { @class = "btn btn-success" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.order_no)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.order_date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.order_status)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.user_no)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.payment_no)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.shipping_no)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.receive_name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.receive_email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.receive_phone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.receive_address)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.amounts)
+                                    </td>
+                                    @*<td>
+                                        @Html.DisplayFor(modelItem => item.taxs)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.totals)
+                                    </td>*@
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.remark)
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                        @Html.PagedListPager((IPagedList)Model, page => Url.Action("UnClose", new { page }))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

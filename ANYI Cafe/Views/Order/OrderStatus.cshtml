@@ -1,0 +1,86 @@
+﻿@model ANYI_Cafe.Models.Orders
+
+@{
+    ViewBag.Title = "訂單狀態資料修改";
+    Layout = "~/Views/Shared/_Layoutback.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container-fluid">
+        <div class="row margin-top-panel">
+            <div class="col-md-12">
+                <div class="panel panel-primary box-shadow">
+                    <div class="panel-heading">
+                        <h4>
+                            <span class="text-center">訂單狀態變更</span>
+                            <span class="pull-right">@AppService.AppName</span>
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal" style="margin-top:0px">
+                            @Html.HiddenFor(m => m.rowid)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.order_status, htmlAttributes: new { @class = "control-label col-md-2 form-header" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.order_status, new SelectList(ViewBag.StatusNo, "Value", "Text"), new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.order_status, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="text-center">
+                                    <input type="submit" value="狀態變更" class="btn btn-primary" />
+                                    @Html.ActionLink("取消變更", "OrderDetailToList", "Order", null, new { @class = "btn btn-danger" })
+                                </div>
+                            </div>
+                            <hr />
+                            <table class="table">
+                                <tr>
+                                    <td class="form-header">@Html.DisplayNameFor(model => model.order_no)：</td>
+                                    <td>@Html.DisplayFor(model => model.order_no)</td>
+                                    <td class="form-header">@Html.DisplayNameFor(model => model.order_date)：</td>
+                                    <td>@Html.DisplayFor(model => model.order_date)</td>
+                                    <td class="form-header">@Html.DisplayNameFor(model => model.order_status)：</td>
+                                    <td>@Html.DisplayFor(model => model.order_status)</td>
+                                </tr>
+                                <tr>
+                                    <td class="form-header">@Html.DisplayNameFor(model => model.user_no)：</td>
+                                    <td>@Html.DisplayFor(model => model.user_no)</td>
+                                    <td class="form-header">@Html.DisplayNameFor(model => model.payment_no)：</td>
+                                    <td>@Html.DisplayFor(model => model.payment_no)</td>
+                                    <td class="form-header">@Html.DisplayNameFor(model => model.shipping_no)：</td>
+                                    <td>@Html.DisplayFor(model => model.shipping_no)</td>
+                                </tr>
+                                <tr>
+                                    <td class="form-header">@Html.DisplayNameFor(model => model.receive_name)：</td>
+                                    <td>@Html.DisplayFor(model => model.receive_name)</td>
+                                    <td class="form-header">@Html.DisplayNameFor(model => model.receive_phone)：</td>
+                                    <td>@Html.DisplayFor(model => model.receive_phone)</td>
+                                    <td class="form-header">@Html.DisplayNameFor(model => model.receive_email)：</td>
+                                    <td>@Html.DisplayFor(model => model.receive_email)</td>
+                                </tr>
+                                <tr>
+                                    <td class="form-header">@Html.DisplayNameFor(model => model.receive_address)：</td>
+                                    <td colspan="5">@Html.DisplayFor(model => model.receive_address)</td>
+                                </tr>
+                                <tr>
+                                    <td class="form-header">@Html.DisplayNameFor(model => model.amounts)：</td>
+                                    <td>@Html.DisplayFor(model => model.amounts)</td>
+                                    <td class="form-header">@*@Html.DisplayNameFor(model => model.taxs)：*@</td>
+                                    <td>@*@Html.DisplayFor(model => model.taxs)*@</td>
+                                    <td class="form-header">@*@Html.DisplayNameFor(model => model.totals)：*@</td>
+                                    <td>@*@Html.DisplayFor(model => model.totals)*@</td>
+                                </tr>
+                                <tr>
+                                    <td class="form-header">@Html.DisplayNameFor(model => model.remark)：</td>
+                                    <td colspan="5">@Html.DisplayFor(model => model.remark)</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

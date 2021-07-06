@@ -1,0 +1,239 @@
+﻿@model IEnumerable<ANYI_Cafe.Models.Orders>
+
+@{
+    ViewBag.Title = "cash_on_delivery";
+    Layout = "~/Views/Shared/_Layout_All.cshtml";
+}
+
+
+<section id="portfolio2" style="min-height: 100vh">
+    <div class="container">
+        <div class="center back" style="margin-top:20rem; text-align:justify">
+            <h2 id="Order-header">訂單資訊</h2>
+
+
+            @*<table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.order_no)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.order_date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.order_status)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.user_no)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.payment_no)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.shipping_no)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.receive_name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.receive_email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.receive_address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.amounts)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.taxs)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.totals)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.remark)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.order_guid)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.order_closed)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.order_validate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.receive_phone)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.order_date)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user_no)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.payment_no)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.shipping_no)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.receive_name)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.receive_phone)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="email">
+                                @Html.DisplayFor(modelItem => item.receive_email)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.receive_address)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.amounts)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.taxs)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.totals)
+                            </td>
+                        </tr>
+
+                    }
+                </table>*@
+            <div id="list" style="text-align:center; font-size:large">
+                @foreach (var item in Model)
+                {
+
+                    <dl class="dropdown">
+                        <dt data-toggle="collapse" data-target="#list-item"> @Html.LabelFor(modelItem => item.order_date) :@Html.DisplayFor(modelItem => item.order_date) <i class="fa fa-chevron-down"></i></dt>
+
+                    </dl>
+
+                    <div class="collapse" id="list-item">
+                        <dl>
+                            <dt> @Html.LabelFor(modelItem => item.user_no) :@Html.DisplayFor(modelItem => item.user_no)</dt>
+                        </dl>
+
+                        <dl>
+                            <dt> @Html.LabelFor(modelItem => item.payment_no) :@Html.DisplayFor(modelItem => item.payment_no)</dt>
+                        </dl>
+
+                        <dl>
+                            <dt> @Html.LabelFor(modelItem => item.shipping_no) :@Html.DisplayFor(modelItem => item.shipping_no)</dt>
+                        </dl>
+
+                        <dl>
+                            <dt> @Html.LabelFor(modelItem => item.receive_name) :@Html.DisplayFor(modelItem => item.receive_name)</dt>
+                        </dl>
+
+                        <dl>
+                            <dt> @Html.LabelFor(modelItem => item.receive_phone) :@Html.DisplayFor(modelItem => item.receive_phone)</dt>
+                        </dl>
+
+                        <dl>
+                            <dt> @Html.LabelFor(modelItem => item.receive_email): <span id="email">@Html.DisplayFor(modelItem => item.receive_email)</span></dt>
+                        </dl>
+
+                        <dl>
+                            <dt> @Html.LabelFor(modelItem => item.receive_address) :@Html.DisplayFor(modelItem => item.receive_address)</dt>
+
+                        </dl>
+
+
+                        <dl>
+                            <dt> @Html.LabelFor(modelItem => item.amounts) :@Html.DisplayFor(modelItem => item.amounts)</dt>
+                        </dl>
+
+                        @*<dl>
+                                <dt> @Html.LabelFor(modelItem => item.taxs) :@Html.DisplayFor(modelItem => item.taxs)</dt>
+                            </dl>*@
+
+                        @*<dl>
+                                <dt> @Html.LabelFor(modelItem => item.totals, htmlAttributes: new { @class = "text-danger " }) :@Html.DisplayFor(modelItem => item.totals)</dt>
+                            </dl>*@
+                    </div>
+                    <div style="text-align:center">
+                        @*<input type="button" class="btn btn-danger" value="取消" readonly onclick="cancel()" />*@
+                        <input type="button" class="btn btn-success" value="確認" readonly onclick="finish(),show()" />
+                    </div>
+
+                    @*<button onclick="show()">test</button>*@
+                }
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+<script src="~/Scripts/sweetalert2.all.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    function cancel() {
+        window.location.href = "/Home/Order";
+    }
+
+    function finish() {
+        var email = $("#email").text()
+        console.log(email);
+        $.ajax({
+            type: "post",
+            data: { email: email },
+            url: "/Product/FinishOrder",
+            success: function (result) {
+                alert("訂單已成立，請至信箱查閱內容");
+                window.location = "/Home/Order";
+
+            }
+        })
+
+
+    }
+    //function ale() {
+
+    //    alert("提示信息！");
+
+    //}
+
+    function show() {
+        Swal.fire(
+            "購買成功!", "謝謝!您的訂單已成立！", "success"
+        )
+    }
+    //function show() {
+    //        setTimeout(function () {
+    //            swal("Ajax请求完成！");
+    //        }, 2000);
+    //    };
+
+</script>
+

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<ANYI_Cafe.Models.Propertys>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layoutback.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row margin-top-panel">
+        <div class="col-md-12">
+            <div class="panel panel-primary box-shadow">
+                <div class="panel-heading">
+                    <h4>
+                        <span class="text-center">屬性資料設定</span>
+                        <span class="pull-right">@AppService.AppName</span>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Search", "Propertys", FormMethod.Post, new { id = "SearchForm" }))
+                    {
+                        <table>
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("新增", "Create", "Propertys", null, new { @class = "btn btn-danger" })
+                                </td>
+                                <td>
+                                    <label style="width:70px"></label>
+                                </td>
+                                <td>
+                                    <label class="form-label" for="searchText">商品屬性查詢 :</label>
+                                </td>
+                                <td style="width:200px;">
+                                    <input type="search" id="searchText" name="searchText" class="form-control" />
+                                </td>
+                                <td style="width:100px;">
+                                    <button type="submit" class="btn btn-primary">
+                                        查詢
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                    <table class="table">
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.mno)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.mname)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.mvalue)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.remark)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.mno)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.mname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.mvalue)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.remark)
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary" style="background-color:#D2B48C">@Html.ActionLink("修改", "Edit", new { id = item.rowid })</button>
+                                    <button class="btn btn-warning" style="background-color:#E8CCFF">@Html.ActionLink("刪除", "Delete", new { id = item.rowid }, new { @class = "", onclick = "return confirm('確認刪除?')" })</button>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

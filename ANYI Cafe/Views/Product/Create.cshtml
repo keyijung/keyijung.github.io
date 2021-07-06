@@ -1,0 +1,113 @@
+﻿@model ANYI_Cafe.Models.ProductCreateViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layoutback.cshtml";
+}
+
+@*<!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Create</title>
+    </head>
+    <body>*@
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row margin-top-panel">
+            <div class="col-md-12">
+                <div class="panel panel-primary box-shadow">
+                    <div class="panel-heading">
+                        <h4>
+                            <span class="text-center">商品資料新增</span>
+                            <span class="pull-right">@AppService.AppName</span>
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.product_no, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.product_no, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.product_no, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.product_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.product_name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.product_name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.product_spec, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(m => m.product_specopt, (SelectList)ViewBag.specopt, "請選擇種類", new { @id = "selectopt", @class = "form-control" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.product_spec, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(m => m.product_spec, new SelectList(""), "請選擇內容", new { @id = "selectcontent", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.product_public, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.CheckBoxFor(model => model.product_public, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.product_public, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="確認" class="btn btn-default" style="background-color:coral" />
+                                <button class="btn btn-danger" style="background-color:#00DDAA">@Html.ActionLink("取消", "List")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@*</body>
+    </html>*@
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $("#selectopt").change(function () {
+        let spec = $("#selectopt option:selected").val();
+        /*$.get("/Product/SpecOption")*/
+
+        $.ajax({
+            type: "post",
+            url: "/Product/SpecOption?spec=" + spec,
+            success: function (result) {
+                $("#selectcontent").empty()
+                for (var i = 0; i < result.length; i++) {
+                    $("#selectcontent").append("<option>" + result[i] + "</option>")
+                }
+            }
+        });
+    });
+</script>

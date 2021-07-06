@@ -1,0 +1,67 @@
+﻿
+@model ANYI_Cafe.Models.user
+
+@{
+    ViewBag.Title = "會員資料修改";
+    Layout = "~/Views/Shared/_Layout_All.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row text-center" style="margin-top:200px">
+            <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 col-xl-4 col-xl-offset-4">
+
+                <h4 class="text-dark text-center" style="margin-bottom:30px">會員資料修改</h4>
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.uid)
+                @Html.HiddenFor(model => model.uno)
+                @Html.HiddenFor(model => model.uemail)
+                @Html.HiddenFor(model => model.upw)
+                @Html.HiddenFor(model => model.urole)
+                @Html.HiddenFor(model => model.is_valid)
+                @Html.HiddenFor(model => model.verifycode)
+                @Html.HiddenFor(model => model.uremark)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.uname, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.uname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.uname, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.utel, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.utel, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.utel, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ubirth, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.ubirth, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.ubirth, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.uaddr, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.uaddr, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.uaddr, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <div class="text-center" style="margin-bottom:50px; margin-top:50px">
+                        <input type="submit" value="確認" class="btn btn-primary" onclick="return confirm('資料已修改')" />
+                        @Html.ActionLink("取消", "UserProfileEdit", "User", null, new { @class = "btn btn-info", onclick = "return confirm('是否確定取消資料修改？')" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+

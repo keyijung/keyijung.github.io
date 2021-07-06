@@ -1,0 +1,106 @@
+﻿
+@model IEnumerable<ANYI_Cafe.Models.vendor>
+
+@{
+    ViewBag.Title = "廠商資料列表";
+    Layout = "~/Views/Shared/_Layoutback.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row margin-top-panel">
+        <div class="col-md-12">
+            <div class="panel panel-primary box-shadow">
+                <div class="panel-heading">
+                    <h4>
+                        <span class="text-center">廠商資料列表</span>
+                        <span class="pull-right">@AppService.AppName</span>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal" style="margin-top:0px">
+                        <p>
+                            @using (Html.BeginForm("Search", "Vendor", FormMethod.Post, new { id = "SearchForm" }))
+                            {
+                                <table>
+                                    <tr>
+                                        <td>
+                                            @Html.ActionLink("新增廠商", "Create", "Vendor", null, new { @class = "btn btn-primary", @style = "background-color:#85BEFF" })
+                                        </td>
+                                    </tr>
+                                </table>
+                            }
+                        </p>
+                        <table class="table" id="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.vno)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.vname)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.vtaxno)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.vtel)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.vemail)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.vaddr)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.vrate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.vremark)
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.vno)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.vname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.vtaxno)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.vtel)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.vemail)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.vaddr)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.vrate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.vremark)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("修改", "Edit", "Vendor", new { id = item.vid }, new { @class = "btn btn-success", @style = "background-color:#6AE6B8" })
+                                            @Html.ActionLink("刪除", "Delete", "Vendor", new { id = item.vid }, new { @class = "btn btn-danger", @style = "background-color:#E8CCFF", onclick = "return confirm('是否確定刪除此筆資料？')" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

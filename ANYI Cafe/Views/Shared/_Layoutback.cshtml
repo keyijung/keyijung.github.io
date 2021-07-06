@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>Creative - Bootstrap Admin Template</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="@Url.Content("~/back/css/bootstrap.min.css")" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="@Url.Content("~/back/css/bootstrap-theme.css")" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="@Url.Content("~/back/css/elegant-icons-style.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/back/css/font-awesome.min.css")" rel="stylesheet" />
+    <!-- full calendar css-->
+    <link href="@Url.Content("~/back/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/back/assets/fullcalendar/fullcalendar/fullcalendar.css")" rel="stylesheet" />
+    <!-- easy pie chart-->
+    <link href="@Url.Content("~/back/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css")" rel="stylesheet" type="text/css" media="screen" />
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="@Url.Content("~/back/css/owl.carousel.css")" type="text/css">
+    <link href="@Url.Content("~/back/css/jquery-jvectormap-1.2.2.css")" rel="stylesheet">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="@Url.Content("~/back/css/fullcalendar.css")">
+    <link href="@Url.Content("~/back/css/widgets.css")" rel="stylesheet">
+    <link href="@Url.Content("~/back/css/style.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/back/css/style-responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/back/css/xcharts.min.css")" rel=" stylesheet">
+    <link href="@Url.Content("~/back/css/jquery-ui-1.10.4.min.css")" rel="stylesheet">
+
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <!-- =======================================================
+      Theme Name: NiceAdmin
+      Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+      Author: BootstrapMade
+      Author URL: https://bootstrapmade.com
+    ======================================================= -->
+</head>
+
+<body>
+    <!-- container section start -->
+    <section id="container" class="">
+
+
+        <header class="header">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+            </div>
+        </header>
+
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu">
+
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="icon_document_alt"></i>
+                            <span>會員訂單管理</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="@Url.Action("UnClose","Order")"><i class="fa fa-angle-right" aria-hidden="true"></i>未結訂單列表</a></li>
+                            <li><a class="" href="@Url.Action("Closed","Order")"><i class="fa fa-angle-right" aria-hidden="true"></i>已結訂單查詢</a></li>
+                            <li><a class="" href="@Url.Action("AllOrder","Order")"><i class="fa fa-angle-right" aria-hidden="true"></i>所有訂單查詢</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+
+                        <a href="javascript:;" class="">
+                            <i class="icon_profile"></i>
+                            <span>會員資料管理</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            @*<li><a class="" href="general.html"><i class="fa fa-angle-right" aria-hidden="true"></i>會員資料維護</a></li>*@
+                            <li><a class="" href="@Url.Action("List","User")"><i class="fa fa-angle-right" aria-hidden="true"></i>會員資料列表</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="fa fa-building-o" aria-hidden="true"></i>
+                            <span>廠商資料管理</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            @*<li><a class="" href="general.html"><i class="fa fa-angle-right" aria-hidden="true"></i>廠商資料維護</a></li>*@
+                            <li><a class="" href="@Url.Action("List","Vendor")"><i class="fa fa-angle-right" aria-hidden="true"></i>廠商資料列表</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="fa fa-archive" aria-hidden="true"></i>
+                            <span>基本資料管理</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="@Url.Action("List", "Product",new {area ="" })"><i class="fa fa-angle-right" aria-hidden="true"></i>商品維護管理</a></li>
+                            <li><a class="" href="@Url.Action("Index", "Propertys",new {area = "Admin" })"><i class="fa fa-angle-right" aria-hidden="true"></i>屬性資料設定</a></li>
+                            <li><a class="" href="@Url.Action("Index", "Payment",new {area = "Admin" })"><i class="fa fa-angle-right" aria-hidden="true"></i>付款方式設定</a></li>
+                            <li><a class="" href="@Url.Action("Index", "Shippings",new {area = "Admin" })"><i class="fa fa-angle-right" aria-hidden="true"></i>運送方式設定</a></li>
+                            @*<li><a class="" href="grids.html"><i class="fa fa-angle-right" aria-hidden="true"></i>訂單狀態設定</a></li>*@
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            <span>帳號資料管理</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            @*<li><a class="" href="basic_table.html"><i class="fa fa-angle-right" aria-hidden="true"></i>帳號明細</a></li>*@
+                            <li><a class="" href="@Url.Action("ResetPassword","User")"><i class="fa fa-angle-right" aria-hidden="true"></i>密碼重設</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="sub-menu">
+                        @*<a href="javascript:;" class="">*@
+                        <a href="@Url.Action("Login","User")">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            <span>(@UserAccount.UserName) 登出</span>
+                        </a>
+                        @*</a>*@
+
+                    </li>
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                <!--overview start-->
+                <!--/.row-->
+
+                <div class="form quick-post">
+
+
+                    <main>@RenderBody()</main>
+                </div>
+                <div class="widget-foot">
+                    <!-- Footer goes here -->
+                </div>
+
+                <!-- project team & activity end -->
+
+            </section>
+            <div class="text-right">
+
+            </div>
+        </section>
+        <!--main content end-->
+    </section>
+    <!-- container section start -->
+    <!-- javascripts -->
+    <script src="@Url.Content("~/back/js/jquery.js")"></script>
+    <script src="@Url.Content("~/back/js/jquery-ui-1.10.4.min.js")"></script>
+    <script src="@Url.Content("~/back/js/jquery-1.8.3.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/back/js/jquery-ui-1.9.2.custom.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/umd/popper.min.js")"></script>
+    <!-- bootstrap -->
+    <script src="@Url.Content("~/back/js/bootstrap.min.js")"></script>
+    <!-- nice scroll -->
+    <script src="@Url.Content("~/back/js/jquery.scrollTo.min.js")"></script>
+    <script src="@Url.Content("~/back/js/jquery.nicescroll.js")" type="text/javascript"></script>
+    <!-- charts scripts -->
+    <script src="@Url.Content("~/back/assets/jquery-knob/js/jquery.knob.js")"></script>
+    <script src="@Url.Content("~/back/js/jquery.sparkline.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/back/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js")"></script>
+    <script src="@Url.Content("~/back/js/owl.carousel.js")"></script>
+    <!-- jQuery full calendar -->
+    <
+    <script src="@Url.Content("~/back/js/fullcalendar.min.js")"></script>
+    <!-- Full Google Calendar - Calendar -->
+    <script src="@Url.Content("~/back/assets/fullcalendar/fullcalendar/fullcalendar.js")"></script>
+    <!--script for this page only-->
+    <script src="@Url.Content("~/back/js/calendar-custom.js")"></script>
+    <script src="@Url.Content("~/back/js/jquery.rateit.min.js")"></script>
+    <!-- custom select -->
+    <script src="@Url.Content("~/back/js/jquery.customSelect.min.js")"></script>
+    <script src="@Url.Content("~/back/assets/chart-master/Chart.js")"></script>
+
+    <!--custome script for all page-->
+    <script src="@Url.Content("~/back/js/scripts.js")"></script>
+    <!-- custom script for this page-->
+    <script src="@Url.Content("~/back/js/sparkline-chart.js")"></script>
+    <script src="@Url.Content("~/back/js/easy-pie-chart.js")"></script>
+    <script src="@Url.Content("~/back/js/jquery-jvectormap-1.2.2.min.js")"></script>
+    <script src="@Url.Content("~/back/js/jquery-jvectormap-world-mill-en.js")"></script>
+    <script src="@Url.Content("~/back/js/xcharts.min.js")"></script>
+    <script src="@Url.Content("~/back/js/jquery.autosize.min.js")"></script>
+    <script src="@Url.Content("~/back/js/jquery.placeholder.min.js")"></script>
+    <script src="@Url.Content("~/back/js/gdp-data.js")"></script>
+    <script src="@Url.Content("~/back/js/morris.min.js")"></script>
+    <script src="@Url.Content("~/back/js/sparklines.js")"></script>
+    <script src="@Url.Content("~/back/js/charts.js")"></script>
+    <script src="@Url.Content("~/back/js/jquery.slimscroll.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/datepicker.js")"></script>
+    @*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+        });
+    </script>
+
+</body>
+
+</html>

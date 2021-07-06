@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="468908d0ab5c455693c556563474eac3" Name="Diagram1">
+        <EntityTypeShape EntityType="anyicafeModel.Payments" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="anyicafeModel.Shippings" Width="1.5" PointX="2.625" PointY="3.875" />
+        <EntityTypeShape EntityType="anyicafeModel.Propertys" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="anyicafeModel.ProductsProperty" Width="1.5" PointX="2.625" PointY="0.75" />
+        <EntityTypeShape EntityType="anyicafeModel.Carts" Width="1.5" PointX="4.375" PointY="3" />
+        <EntityTypeShape EntityType="anyicafeModel.OrdersDetail" Width="1.5" PointX="4.375" PointY="6.125" />
+        <EntityTypeShape EntityType="anyicafeModel.city" Width="1.5" PointX="6.625" PointY="4.625" />
+        <EntityTypeShape EntityType="anyicafeModel.district" Width="1.5" PointX="8.25" PointY="4.625" />
+        <EntityTypeShape EntityType="anyicafeModel.road" Width="1.5" PointX="9.875" PointY="4.625" />
+        <EntityTypeShape EntityType="anyicafeModel.Orders" Width="1.5" PointX="2.625" PointY="6.125" />
+        <EntityTypeShape EntityType="anyicafeModel.user" Width="1.5" PointX="8.375" PointY="7.75" />
+        <EntityTypeShape EntityType="anyicafeModel.Status" Width="1.5" PointX="7.25" PointY="0.75" />
+        <EntityTypeShape EntityType="anyicafeModel.Categorys" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="anyicafeModel.product" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="anyicafeModel.vendor" Width="1.5" PointX="6.625" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

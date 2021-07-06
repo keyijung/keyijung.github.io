@@ -1,0 +1,302 @@
+﻿@model ANYI_Cafe.Models.product
+@using ANYI_Cafe.App_Class;
+@using System.Threading;
+@{
+    ViewBag.Title = "商品資訊";
+    Layout = "~/Views/Shared/_Layout_All.cshtml";
+    <link href="@Url.Content("~/Company/Company/css/product-detail.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Company/Company/css/easyzoom.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Company/Company/js/easyzoom.js")"></script>
+
+}
+
+
+@*@section Styles{
+        <link href="@Url.Content("~/Company/Company/css/easyzoom.css")" rel="stylesheet" />
+    }
+    @section Scripts{
+        <script src="@Url.Content("~/Company/Company/js/easyzoom.js")"></script>
+    }*@
+
+
+<div class="container" style="margin-top:20rem;  ">
+    <div class="row" id="Detail">
+        <div class="item-photo col-lg-7">
+            @Html.AntiForgeryToken()
+            <img src="@string.Format("../../Images/Product/{0}/{1}.jpg", Model.product_no , Model.product_no )" style="width:400px" id="indexbg" />
+        </div>
+        <div class="product-content col-lg-5" style="border: 0px solid gray">
+            @using (Html.BeginForm())
+            {
+                <h4 style="font-size:x-large"><span id="product_name">@Model.product_name</span></h4>
+                <div class="text-secondary" style="font-weight:400">商品編號：<span id="product_no">@Model.product_no</span></div>
+                <div class="text-danger price" style="font-size:20px">建議售價:<span id="product_price" name="product_price" class="product-sale-price">@Model.price</span></div>
+                @*@Html.HiddenFor(m => m.price, new { @id = "price", @name = "price" })*@
+                <div style="padding-top:30px"></div>
+                //List<SelectListItem> lists = Shop.GetPropertyList(Model.product_no);
+                List<SelectListItem> lists = Shop.GetPropertyList(Model.product_spec);
+                if (lists.Count > 0)
+                {
+                    string varid = "";
+                    int int_index = 0;
+                    foreach (var item in lists)
+                    {
+                        int_index++;
+                        varid = string.Format("property{0}", int_index);
+                        <div class="section">
+                            <div>
+                                <span class="product-detail-label control-label size" style="margin-top: 15px;">@item.Text：</span>
+                                <select id="@item.Value" name="@item.Value" class="form-control product-detail-select">
+                                    @{
+
+                                        //List<string> str_values = Shop.GetProductPropertyValue(Model.product_no, item.Value).Split(',').ToList();
+                                        List<string> str_values = Shop.GetProductPropertyValue(Model.product_name);
+                                        if (str_values.Count() > 0)
+                                        {
+                                            foreach (var value in str_values)
+                                            {
+                                                <option>@value</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="section" style="padding-bottom: 20px;padding-top:10px; ">
+                    <h6 class="title-attr product-detail-label">購買數量：</h6>
+                    <div style="width:300px">
+                        <div class="btn-minus" style="float:left;"><span class="fa fa-minus"></span></div>
+                        <input id="qty" name="qty" value="1" style="width:100px;max-width:100px;" />
+                        <div class="btn-plus" style="float:right"><span class="fa fa-plus"></span></div>
+                    </div>
+                </div>
+                <div class="section" style="padding-bottom: 20px;">
+                    <input type="submit" value="加入購物車" class="btn btn-primary btn2" />
+                </div>
+                <div class="dropdown mt-5 ">
+                    <h2 data-toggle="collapse" data-target="#menu" class="h5 text-success list-group-item-action mt-3 Showitdown">
+                        <img src="~/Company/Company/images/slider/711.png" style="width:50px" />
+                        <img src="~/Company/Company/images/slider/shopping_cart.png" />
+                        付款與運送方式
+                        <i class="fa fa-chevron-down"></i>
+                    </h2>
+
+                    <ul class="collapse" id="menu" style="font-size:initial; list-style:none">
+                        <li class="section-heading">付款方式 :</li>
+                        <li>貨到付款</li>
+                        <li>信用卡付款</li>
+                        <li>ATM轉帳</li>
+                        <li class="section-heading" style="margin-top:10px">運送方式 :</li>
+                        <li>
+                            下單後7個工作天透過宅配送達。除了蛋糕為低溫配送，其餘為常溫配送。
+                        </li>
+                    </ul>
+
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-12 ">
+        <ul class="menu-items" style="text-align:center">
+            <li class="active text-dark" style="list-style:none;background: rgba(247, 248, 250, 0.85);border-bottom:1px solid #d8d8d8; margin-top:20px;"><img src="~/Company/Company/images/slider/main.png" />商品詳細說明</li>
+
+            @if (Model.product_no == "001" || Model.product_no == "007")
+            {
+                @Html.Partial($"~/Views/Shared/Product/001.cshtml")
+            }
+            else if (Model.product_no == "002" || Model.product_no == "008")
+            {
+                @Html.Partial($"~/Views/Shared/Product/002.cshtml")
+            }
+            else if (Model.product_no == "003" || Model.product_no == "009")
+            {
+                @Html.Partial($"~/Views/Shared/Product/003.cshtml")
+            }
+            else if (Model.product_no == "015" || Model.product_no == "016")
+            {
+                @Html.Partial($"~/Views/Shared/Product/015.cshtml")
+            }
+            else if (Model.product_no == "017" || Model.product_no == "018")
+            {
+                @Html.Partial($"~/Views/Shared/Product/017.cshtml")
+            }
+            else
+            {
+                @Html.Partial($"~/Views/Shared/Product/{Shop.ProductNo}.cshtml")
+            }
+
+            @*@if (Model.product_no == "002")
+        {
+            @Html.Partial("~/Views/Shared/Product/002.cshtml")
+        }
+        @if (Model.product_no == "003")
+        {
+            @Html.Partial("~/Views/Shared/Product/003.cshtml")
+        }
+        @if (Model.product_no == "004")
+        {
+            @Html.Partial("~/Views/Shared/Product/004.cshtml")
+        }
+        @if (Model.product_no == "005")
+        {
+            @Html.Partial("~/Views/Shared/Product/005.cshtml")
+        }
+        @if (Model.product_no == "006")
+        {
+            @Html.Partial("~/Views/Shared/Product/006.cshtml")
+        }*@
+        </ul>
+    </div>
+</div>
+
+<div class="container other-item" style="margin-top:100px">
+    <hr />
+    <h3 class="section-heading" style="">其他人也購買了..</h3>
+    @for (int i = 1; i <= 4; i++)
+    {
+        Random random = new Random();
+        Thread.Sleep(10);
+        var temp = Shop.ProductList().ToList();
+        var data = temp[random.Next(0, Shop.ProductList().Count)];
+        if (data.product_no != Shop.ProductNo)
+        {
+            <div class="col-lg-3" style="height:100%">
+                <a href="@Url.Action("ProductDetail","Product",new {id = data.product_no })">
+                    <img src="@string.Format("../../Images/Product/{0}/{1}.jpg", data.product_no , data.product_no )" style="width:100%" />
+                </a>
+                <h3>@Html.DisplayFor(modelItem => data.product_name)</h3>
+                <p>$@Html.DisplayFor(modelItem => data.price)</p>
+            </div>
+        }
+
+    }
+    @*<div class="col-lg-3">
+            @if (Model.product_no == "001")
+            {
+
+            }
+            <a href="@Url.Action("ProductDetail","Product",new {id = Model.product_no })">
+                <img src="@string.Format("../../Images/Product/{0}/{1}.jpg", Model.product_no , Model.product_no )" style="width:100%" />
+            </a>
+            <h3>@Html.DisplayFor(modelItem => Model.product_name)</h3>
+            <p>$@Html.DisplayFor(modelItem => Model.price)</p>
+        </div>
+        <div class="col-lg-3">
+            <a href="@Url.Action("ProductDetail","Product",new {id = Model.product_no })">
+                <img src="@string.Format("../../Images/Product/{0}/{1}.jpg", Model.product_no , Model.product_no )" style="width:100%" />
+            </a>
+            <h3>@Html.DisplayFor(modelItem => Model.product_name)</h3>
+            <p>$@Html.DisplayFor(modelItem => Model.price)</p>
+        </div>
+        <div class="col-lg-3">
+            <a href="@Url.Action("ProductDetail","Product",new {id = Model.product_no })">
+                <img src="@string.Format("../../Images/Product/{0}/{1}.jpg", Model.product_no , Model.product_no )" style="width:100%" />
+            </a>
+            <h3>@Html.DisplayFor(modelItem => Model.product_name)</h3>
+            <p>$@Html.DisplayFor(modelItem => Model.price)</p>
+        </div>
+        <div class="col-lg-3">
+            <a href="@Url.Action("ProductDetail","Product",new {id = Model.product_no })">
+                <img src="@string.Format("../../Images/Product/{0}/{1}.jpg", Model.product_no , Model.product_no )" style="width:100%" />
+            </a>
+            <h3>@Html.DisplayFor(modelItem => Model.product_name)</h3>
+            <p>$@Html.DisplayFor(modelItem => Model.price)</p>
+        </div>*@
+</div>
+
+
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.scrolling-parallax.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".btn-minus").on("click", function () {
+
+            var now = $(".section > div > input").val();
+            if ($.isNumeric(now)) {
+                if (parseInt(now) - 1 > 0) { now--; }
+                $(".section > div > input").val(now);
+            } else {
+                $(".section > div > input").val("1");
+            }
+        })
+        $(".btn-plus").on("click", function () {
+            var now = $(".section > div > input").val();
+            if ($.isNumeric(now)) {
+                $(".section > div > input").val(parseInt(now) + 1);
+            } else {
+                $(".section > div > input").val("1");
+            }
+        })
+    })
+
+</script>
+<section id="partner" style="background-color:whitesmoke;margin-top:200px">
+    <div class="container">
+        <div class="col-md-4 ">
+            <img src="~/Company/Company/images/sale/box (1).png" />
+        </div>
+        <div class="col-md-8">
+            <h3><i class="fa fa-truck" aria-hidden="true"></i>宅配須知 :</h3>
+            <p class="text-justify">
+                ※宅配一定有風險，下單前請三思，運送過程可能會因車體晃動、路面不平等而有碰撞的狀態，風險須自行承擔，黑貓已公告不受理蛋糕類的毀壞補償，
+                除非嚴重人為因素的變形，黑貓宅配才會視狀況退還"運費"，可以接受者再下單喔!!
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    $(document).ready(function () {
+        var a = $("#product_no").text()
+        var b = $("#product_price").text()
+        $.ajax({
+            type: "get",
+            url: "/Product/Product?product_no=" + a + "&product_price=" + b,
+            success: function (result) {
+                $("#size").val(result.product_spec)
+            }
+        })
+
+    })
+
+    $('#size').change(function () {
+        var a = $("#size option:selected").text()
+        var b = $("#product_name").text()
+        $.ajax({
+            type: "get",
+            url: "/Product/Product_price?product_name=" + b + "&product_spec=" + a,
+            success: function (result) {
+                $("#product_no").text(result.product_no);
+                $("#product_price").text(result.price);
+            }
+        })
+    })
+
+    $('#qty').change(function () {
+        var a = $("#qty option:selected").text()
+        var b = $("#product_name").text()
+        $.ajax({
+            type: "get",
+            url: "/Product/Product_price?product_name=" + b + "&product_spec=" + a,
+            success: function (result) {
+                $("#product_no").text(result.product_no);
+                $("#product_price").text(result.price);
+            }
+        })
+    })
+    //$(document).ready(function () {
+
+    //})
+
+    $.scrollingParallax('img/parallax-background.jpg');
+</script>

@@ -1,0 +1,251 @@
+﻿@{
+    ViewBag.Title = "啡比尋嚐";
+    Layout = "~/Views/Shared/_Layout_All.cshtml";
+}
+
+<!--<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>No Anchor links - fullPage.js</title>
+    <meta name="author" content="Alvaro Trigo Lopez" />
+    <meta name="description" content="fullPage.js with no anchor links." />
+    <meta name="keywords" content="fullpage,jquery,anchor,links,inside,demo" />
+    <meta name="Resource-type" content="Document" />-->
+@*<link href="@Url.Content("~/fullpage/fullPage.js-master/dist/fullpage.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/fullpage/fullPage.js-master/examples/examples.css")" rel="stylesheet" />*@
+
+
+<!--[if IE]>
+    <script type="text/javascript">
+         var console = { log: function() {} };
+    </script>
+<![endif]-->
+<!--</head>-->
+
+<link href="@Url.Content("~/fullpage/fullPage.js-master/dist/fullpage.css")" rel="stylesheet" />
+<link href="@Url.Content("~/fullpage/fullPage.js-master/examples/examples.css")" rel="stylesheet" />
+<div>
+
+    @*<select id="demosMenu">
+            <option selected>Choose Demo</option>
+            <option id="jquery-adapter">jQuery adapter</option>
+            <option id="active-slide">Active section and slide</option>
+            <option id="auto-height">Auto height</option>
+            <option id="autoplay-video-and-audio">Autoplay Video and Audio</option>
+            <option id="backgrounds">Background images</option>
+            <option id="backgrounds-fixed">Fixed fullscreen backgrounds</option>
+            <option id="background-video">Background video</option>
+            <option id="callbacks-v2-compatible">Callbacks version 2</option>
+            <option id="callbacks-v3">Callbacks version 3</option>
+            <option id="continuous-horizontal">Continuous horizontal</option>
+            <option id="continuous-vertical">Continuous vertical</option>
+            <option id="parallax">Parallax</option>
+            <option id="css3">CSS3</option>
+            <option id="drag-and-move">Drag And Move</option>
+            <option id="easing">Easing</option>
+            <option id="fading-effect">Fading Effect</option>
+            <option id="fixed-headers">Fixed headers</option>
+            <option id="gradient-backgrounds">Gradient backgrounds</option>
+            <option id="interlocked-slides">Interlocked Slides</option>
+            <option id="looping">Looping</option>
+            <option id="methods">Methods</option>
+            <option id="navigation-vertical">Vertical navigation dots</option>
+            <option id="navigation-horizontal">Horizontal navigation dots</option>
+            <option id="navigation-tooltips">Navigation tooltips</option>
+            <option id="no-anchor">No anchor links</option>
+            <option id="normal-scroll">Normal scrolling</option>
+            <option id="normalScrollElements">Normal scroll elements</option>
+            <option id="offset-sections">Offset sections</option>
+            <option id="one-section">One single section</option>
+            <option id="reset-sliders">Reset sliders</option>
+            <option id="responsive-auto-height">Responsive Auto Height</option>
+            <option id="responsive-height">Responsive Height</option>
+            <option id="responsive-width">Responsive Width</option>
+            <option id="responsive-slides">Responsive Slides</option>
+            <option id="scrollBar">Scroll bar enabled</option>
+            <option id="scroll-horizontally">Scroll horizontally</option>
+            <option id="scrollOverflow">Scroll inside sections and slides</option>
+            <option id="scrollOverflow-reset">ScrollOverflow Reset</option>
+            <option id="lazy-load">Lazy load</option>
+            <option id="scrolling-speed">Scrolling speed</option>
+            <option id="trigger-animations">Trigger animations</option>
+            <option id="vue-fullpage">Vue-fullpage component</option>
+        </select>*@
+
+    <div id="fullpage">
+
+        @*<div class="media-left">
+                <ul id="Side" style="text-align:justify">
+                    <li style="color:black"><a href="#section0">經典檸檬塔派</a></li>
+                    <li style="color:black"><a href="#section1">瘋狂黑巧克力</a></li>
+                    <li style="color:black"><a href="#section2">草莓華爾滋</a></li>
+                    <li style="color:black"><a href="#section3">水洗中淺焙咖啡豆</a></li>
+                    <li style="color:black"><a href="#section4">水洗深焙咖啡豆</a></li>
+                    <li style="color:black"><a href="#section5">水洗淺焙咖啡豆</a></li>
+                </ul>
+            </div>*@
+        <div>
+            <div class="section" id="section0">
+
+                <div class="intro" style="margin-top:100px">
+                    <img src="~/Company/Company/images/sale/1.png" class="img-filid  imgAni" data-toggle="modal" data-target="#menu1" title="左鍵按一下詳細說明" />
+                    <h2>經典檸檬塔派/6吋</h2>
+                </div>
+            </div>
+            <div class="section" id="section1">
+                <div class="intro" style="margin-top:100px">
+                    <img src="~/Company/Company/images/sale/3.png" class="img-filid imgAni" data-toggle="modal" data-target="#menu2" title="左鍵按一下詳細說明" />
+                    <h2>瘋狂黑巧克力/6吋</h2>
+                </div>
+            </div>
+            <div class="section" id="section2">
+                <div class="intro" style="margin-top:100px">
+                    <img src="~/Company/Company/images/sale/5.png" class="img-filid imgAni" data-toggle="modal" data-target="#menu3" title="左鍵按一下詳細說明" />
+                    <h2 style="color:white">草莓華爾滋/6吋</h2>
+                </div>
+            </div>
+            <div class="section" id="section3">
+                <div class="intro" style="margin-top:100px">
+                    <img src="~/Company/Company/images/sale/7.png" class="img-filid imgAni" data-toggle="modal" data-target="#menu4" title="左鍵按一下詳細說明" />
+                    <h2>水洗中淺焙咖啡豆/280g</h2>
+                </div>
+            </div>
+            <div class="section" id="section4">
+                <div class="intro" style="margin-top:100px">
+                    <img src="~/Company/Company/images/sale/8.png" class="img-filid imgAni" data-toggle="modal" data-target="#menu5" title="左鍵按一下詳細說明" />
+                    <h2>水洗深焙咖啡豆/280g</h2>
+                </div>
+            </div>
+            <div class="section" id="section5">
+                <div class="intro" style="margin-top:100px">
+                    <img src="~/Company/Company/images/sale/9.png" class="img-filid imgAni" data-toggle="modal" data-target="#menu6" title="左鍵按一下詳細說明" />
+                    <h2 style="color:white">水洗淺焙咖啡豆/280g</h2>
+                </div>
+            </div>
+            <div class="this-topping" style="display: none;">
+                <span><i class="fa fa-chevron-circle-up\">往上</i></span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal " id="menu1">
+        <div class="modal-dialog modal-open">
+            <div class="modal-content center  ">
+                <div class="modal-header text-success h1">經典檸檬塔派/6吋<a href="" class="close" data-dismiss="modal">&times;</a></div>
+                <div class="modal-body  text-center  ">
+                    <img src="~/Company/Company/images/sale/0002.png" class=" img-fluid" />
+                    <div class="text-center">
+                        <h3>主原料 :</h3>
+                        <p>手作奶油甜塔皮/杏仁奶油蛋糕/檸檬酒/檸檬凝乳/檸檬屑/蛋白霜/黃、綠檸檬片</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="menu2">
+        <div class="modal-dialog modal-open">
+            <div class="modal-content center">
+                <div class="modal-header text-success h1">瘋狂黑巧克力/6吋<a href="" class="close" data-dismiss="modal">&times;</a></div>
+                <div class="modal-body text-center ">
+                    <img src="~/Company/Company/images/sale/0004.png" class="img-fluid " />
+                    <div class="text-center">
+                        <h3>主原料 :</h3>
+                        <p>麵粉、糖、可可粉、比利時60.1%苦甜巧克力、巧克力醬、法國純生巧克力塊</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="menu3">
+        <div class="modal-dialog modal-open">
+            <div class="modal-content center">
+                <div class="modal-header text-success h1">草莓華爾滋/6吋<a href="" class="close" data-dismiss="modal">&times;</a></div>
+                <div class="modal-body  text-center">
+                    <img src="~/Company/Company/images/sale/0006.png" class="img-fluid" />
+                    <div class="text-center">
+                        <h3>主原料 :</h3>
+                        <p>玫瑰瑪德蓮、蜂蜜葡萄柚庫利、草莓慕斯、草莓軟凍、草莓</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="menu4">
+        <div class="modal-dialog modal-open">
+            <div class="modal-content center">
+                <div class="modal-header text-success h1">水洗中淺焙咖啡豆<a href="" class="close" data-dismiss="modal">&times;</a></div>
+                <div class="modal-body  text-center">
+                    <img src="~/Company/Company/images/sale/0007.png" class="img-fluid" />
+                    <div class="text-center">
+                        <h3>主原料 :</h3>
+                        <p>帶著藍莓、李子與葡萄乾風味，蜂蜜與楓糖的甜感，質地乾淨清澈。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="menu5">
+        <div class="modal-dialog modal-open">
+            <div class="modal-content center">
+                <div class="modal-header text-success h1">水洗深焙咖啡豆<a href="" class="close" data-dismiss="modal">&times;</a></div>
+                <div class="modal-body  text-center">
+                    <img src="~/Company/Company/images/sale/0008.png" class="img-fluid" />
+                    <div class="text-center">
+                        <h3>主原料 :</h3>
+                        <p>酸甜感的甜橙，帶著紅茶般的茶感，蔗糖般的甜感，餘韻持久。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="menu6">
+        <div class="modal-dialog modal-open">
+            <div class="modal-content center">
+                <div class="modal-header text-success h1">水洗淺焙咖啡豆<a href="" class="close" data-dismiss="modal">&times;</a></div>
+                <div class="modal-body  text-center">
+                    <img src="~/Company/Company/images/sale/0009.png" class="img-fluid " />
+                    <div class="text-center">
+                        <h3>主原料 :</h3>
+                        <p>濃郁的可可香氣，加上淺烘焙煙燻感，使用義式萃取加入牛奶，口感厚實。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="@Url.Content("~/fullpage/fullPage.js-master/dist/fullpage.js")"></script>
+    <script src="@Url.Content("~/fullpage/fullPage.js-master/examples/examples.js")"></script>
+
+    <script type="text/javascript">
+        var myFullpage = new fullpage('#fullpage', {
+            sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE'],
+            navigation: true,
+            navigationPosition: 'left',
+            navigationTooltips: ['經典檸檬塔派', '瘋狂黑巧克力', '草莓華爾滋', '水洗中淺焙咖啡豆', '水洗深焙咖啡豆', '水洗淺焙咖啡豆']
+        });
+    </script>
+    <script>
+        $(window).scroll(function (event) {
+            /* Act on the event */
+            if ($(this).scrollTop() == 0) {
+                $(".this-topping").hide(1000);
+            }
+            if ($(this).scrollTop() != 0) {
+                $(".this-topping").show(1000);
+            }
+        });
+        $(".this-topping").click(function (event) {
+            /* Act on the event */
+            $("html,body").animate({
+                scrollTop: "0px"
+            }, 666
+            )
+        });
+    </script>
+
+
+</div>
+@*</html>*@

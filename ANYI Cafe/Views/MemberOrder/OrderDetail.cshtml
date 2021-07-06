@@ -1,0 +1,128 @@
+﻿
+@model OrderDetailViewModel
+
+@{
+    ViewBag.Title = "訂單資料明細";
+    Layout = "~/Views/Shared/_Layout_All.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row margin-top-panel">
+        <div class="col-md-12">
+            <div class="panel panel-primary box-shadow">
+                <div class="panel-heading">
+                    <h4>
+                        <span class="text-center">訂單資料明細</span>
+                        <span class="pull-right">@AppService.AppName</span>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal" style="margin-top:60px">
+                        <p>
+                            @Html.ActionLink("返回訂單列表", "OrderDetailToList", "MemberOrder", null, new { @class = "btn btn-primary" })
+                        </p>
+                        <table class="table">
+                            <tr>
+                                <td class="form-header">@Html.DisplayNameFor(model => model.OrderMaster.order_no)：</td>
+                                <td>@Html.DisplayFor(model => model.OrderMaster.order_no)</td>
+                                <td class="form-header">@Html.DisplayNameFor(model => model.OrderMaster.order_date)：</td>
+                                <td>@Html.DisplayFor(model => model.OrderMaster.order_date)</td>
+                                <td class="form-header">@Html.DisplayNameFor(model => model.OrderMaster.order_status)：</td>
+                                <td>@Html.DisplayFor(model => model.OrderMaster.order_status)</td>
+                            </tr>
+                            <tr>
+                                <td class="form-header">@Html.DisplayNameFor(model => model.OrderMaster.user_no)：</td>
+                                <td>@Html.DisplayFor(model => model.OrderMaster.user_no)</td>
+                                <td class="form-header">@Html.DisplayNameFor(model => model.OrderMaster.payment_no)：</td>
+                                <td>@Html.DisplayFor(model => model.OrderMaster.payment_no)</td>
+                                <td class="form-header">@Html.DisplayNameFor(model => model.OrderMaster.shipping_no)：</td>
+                                <td>@Html.DisplayFor(model => model.OrderMaster.shipping_no)</td>
+                            </tr>
+                            <tr>
+                                <td class="form-header">@Html.DisplayNameFor(model => model.OrderMaster.receive_name)：</td>
+                                <td>@Html.DisplayFor(model => model.OrderMaster.receive_name)</td>
+                                <td class="form-header">@Html.DisplayNameFor(model => model.OrderMaster.receive_phone)：</td>
+                                <td>@Html.DisplayFor(model => model.OrderMaster.receive_phone)</td>
+                                <td class="form-header">@Html.DisplayNameFor(model => model.OrderMaster.receive_email)：</td>
+                                <td>@Html.DisplayFor(model => model.OrderMaster.receive_email)</td>
+                            </tr>
+                            <tr>
+                                <td class="form-header">@Html.DisplayNameFor(model => model.OrderMaster.receive_address)：</td>
+                                <td colspan="5">@Html.DisplayFor(model => model.OrderMaster.receive_address)</td>
+                            </tr>
+                            <tr>
+                                <td class="form-header">@Html.DisplayNameFor(model => model.OrderMaster.amounts)：</td>
+                                <td>@Html.DisplayFor(model => model.OrderMaster.amounts)</td>
+                                <td class="form-header">@*@Html.DisplayNameFor(model => model.OrderMaster.taxs)：*@</td>
+                                <td>@*@Html.DisplayFor(model => model.OrderMaster.taxs)*@</td>
+                                <td class="form-header">@*@Html.DisplayNameFor(model => model.OrderMaster.totals)：*@</td>
+                                <td>@*@Html.DisplayFor(model => model.OrderMaster.totals)*@</td>
+                            </tr>
+                            <tr>
+                                <td class="form-header">@Html.DisplayNameFor(model => model.OrderMaster.remark)：</td>
+                                <td colspan="5">@Html.DisplayFor(model => model.OrderMaster.remark)</td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.First().product_no)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.First().product_name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.First().product_spec)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.First().price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.First().qty)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.First().amount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.First().remark)
+                                </th>
+                            </tr>
+
+                            @foreach (var item in Model.OrderDetail)
+                            {
+                                <tr class="text-center">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.product_no)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.product_name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.product_spec)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.qty)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.amount)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.remark)
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

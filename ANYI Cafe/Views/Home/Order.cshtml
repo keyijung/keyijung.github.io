@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ANYI_Cafe.Models.product>
+
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout_All.cshtml";
+
+}
+
+<section id="portfolio2" style="min-height: 100vh">
+    <div class="container">
+        <div class="center" style="margin-top:20rem">
+
+            <div class="div-relative text-center">
+                <div class="div-b">Order</div>
+                <div class="div-c">ANYI CAFE</div>
+            </div>
+        </div>
+
+
+        <!--/#portfolio-filter-->
+    </div>
+    <div class="container ">
+        <div class=" col-lg-3 ">
+            <div id="tree">
+                <div class="list-group">
+                    <div class="list-group-item1 active ">
+                       <a href="@Url.Action("Order","Home")"><h6 class="tree-header ">全部商品</h6></a> 
+                    </div>
+                </div>
+            </div>
+            @*<ul id="leftbar" style="list-style:none">
+                <li>
+                    <div><a href="@Url.Action("Order","Home")">全部商品<span class="countbar">12</span></a></div>
+                </li>
+                <li class="dropdown">
+                    <div><a href="#">甜點介紹<i class="fa fa-chevron-down " data-toggle="collapse" data-target="#prd0"></i></a></div>
+
+                    <ul class="collapse" id="prd0">
+                        <li><a href="#">經典檸檬塔派</a></li>
+                        <li><a href="#">瘋狂黑巧克力</a></li>
+                        <li><a href="#">草莓華爾滋</a></li>
+                        <li><a href="#">巧克力禮盒</a></li>
+                        <li><a href="#">瑪德蓮禮盒</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <div><a href="#">咖啡介紹<i id="icon" class="fa fa-chevron-down" data-toggle="collapse" data-target="#prd1"></i></a></div>
+                    <ul class="collapse" id="prd1">
+                        <li><a href="#">水洗中淺焙咖啡豆</a></li>
+                        <li><a href="#">水洗深焙咖啡豆</a></li>
+                        <li><a href="#">水洗淺焙咖啡豆</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <div><a href="#">週邊商品<i id="icon" class="fa fa-chevron-down" data-toggle="collapse" data-target="#prd2"></i></a></div>
+                    <ul class="collapse" id="prd2">
+                        <li><a href="#">手沖咖啡壺</a></li>
+                        <li><a href="#">手沖咖啡濾杯</a></li>
+                        <li><a href="#">造型咖啡濾杯</a></li>
+                        <li><a href="#">手沖咖啡濾紙</a></li>
+                    </ul>
+                </li>
+            </ul>*@
+        </div>
+        <div class="wow fadeInUp col-lg-9">
+            <div class="portfolio2-items ">
+                <!--/.portfolio-item-->
+                @foreach (var item in Model)
+                {
+                    <div class="portfolio2-item joomla bootstrap col-xs-12 col-sm-4">
+                        <div class="recent-work-wrap">
+                            @*<img class="img-responsive " src="images/portfolio/recent/item2.png" alt="">*@
+                            <div class="overlay2 text-center ">
+                                <figure style="margin:auto;">
+                                    <img src="@string.Format("../../Images/Product/{0}/{1}.jpg", item.product_no, item.product_no)" class="img-filid" />
+                                    <figcaption><a href="@Url.Action("ProductDetail","Product",new {id = item.product_no })"><i class="fa fa-shopping-cart fa-2x"></i></a></figcaption>
+                                </figure>
+                                <h2>@Html.DisplayFor(modelItem => item.product_name)</h2>
+                                @*<h2>@Html.DisplayFor(modelItem => item.product_spec)</h2>*@
+                                <p>$@Html.DisplayFor(modelItem => item.price)</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

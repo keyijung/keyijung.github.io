@@ -1,0 +1,24 @@
+﻿.margin-top-panel {
+    margin-top: 30px !important;
+}
+
+.wrapper {
+    margin-top: 30px !important;
+}
+
+.panel .panel-heading {
+    padding: 15px !important;
+    font-weight: bold !important;
+}
+
+.form-control {
+    width: 100% !important;
+}
+
+.form-header {
+    color: maroon;
+    font-weight: bold;
+}
+
+
+

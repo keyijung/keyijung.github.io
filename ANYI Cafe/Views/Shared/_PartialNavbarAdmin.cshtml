@@ -1,0 +1,20 @@
+﻿<li>@Html.ActionLink("首頁", "Index", "Home")</li>
+<li>@Html.ActionLink("訂單管理", "UnClose", "Order")</li>
+<li>@Html.ActionLink("會員管理", "List", "User")</li>
+<li>@Html.ActionLink("廠商管理", "List", "Vendor")</li>
+<li>@Html.ActionLink("商品管理", "List", "Product")</li>
+
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+        <span class="nav-label"><i class="fa fa-user"></i>(@UserAccount.UserName)</span>
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="submenu-item ">
+            @Html.ActionLink("密碼變更", "ResetPassword", "User", null, new { @class = "fa fa-unlock-alt" })
+        </li>
+        <li class="submenu-item ">
+            @Html.ActionLink("登出", "Login", "User", null, new { @class = "fa fa-sign-out" })
+        </li>
+    </ul>
+</li>
